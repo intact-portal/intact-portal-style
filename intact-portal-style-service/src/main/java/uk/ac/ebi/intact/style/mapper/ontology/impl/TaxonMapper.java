@@ -68,7 +68,7 @@ public class TaxonMapper extends AbstractOntologyMapper<Taxon, Color> implements
     @Override
     public void download() {
         try {
-            URL url = new URL("https://github.com/obophenotype/ncbitaxon/releases/download/current/ncbitaxon.obo");
+            URL url = new URL("http://purl.obolibrary.org/obo/ncbitaxon.obo"); // We cannot use the slim subset as it lacks 500 of our taxIds
             Path path = Paths.get(TaxonMapper.class.getResource("/").getPath(), "ncbitaxon.obo");
             log.info("Start downloading of ncbitaxon.obo to " + path.toAbsolutePath().toString());
             Files.copy(url.openStream(), path, StandardCopyOption.REPLACE_EXISTING);
