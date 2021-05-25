@@ -3,6 +3,7 @@ package uk.ac.ebi.intact.style.ws.controller;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +26,7 @@ public class StyleController {
 
     private final StyleService styleService;
 
+    @Autowired
     public StyleController(StyleService styleService) {
         this.styleService = styleService;
     }

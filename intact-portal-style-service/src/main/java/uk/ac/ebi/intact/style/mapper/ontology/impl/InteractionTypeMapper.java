@@ -8,6 +8,7 @@ import uk.ac.ebi.intact.style.model.ontology.Term;
 import java.awt.*;
 
 public class InteractionTypeMapper extends AbstractOntologyMapper<InteractionType, Color> {
+
     private final MIOntology ontology;
 
     public InteractionTypeMapper(MIOntology ontology) {

@@ -7,6 +7,7 @@ import uk.ac.ebi.intact.style.model.ontology.Term;
 import uk.ac.ebi.intact.style.model.shapes.NodeShape;
 
 public class InteractorTypeMapper extends AbstractOntologyMapper<InteractorType, NodeShape> {
+
     private final MIOntology ontology;
 
     public InteractorTypeMapper(MIOntology ontology) {
