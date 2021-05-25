@@ -29,7 +29,6 @@ public class ProxyManager {
     }
 
     public Proxy getProxy() {
-        System.out.println("Proxy");
         if(proxy.address() != null) {
             log.info("Proxy address:" + proxy.address().toString());
         }
