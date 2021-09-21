@@ -19,6 +19,7 @@ public class MIScoreMapper implements Mapper<Double, Color> {
             new Color(135, 36, 0),
             new Color(83, 26, 0),
             new Color(41, 15, 2),
+            new Color(41, 15, 2),
     };
 
     @Override
