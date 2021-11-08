@@ -32,12 +32,13 @@ public class StyleService {
     private final InteractionMutationWidthMapper interactionMutationWidthMapper;
     private final SummaryEdgeWidthMapper summaryEdgeWidthMapper;
     private final InteractionExpansionMapper interactionExpansionMapper;
+    private final InteractionNegativeMapper interactionNegativeMapper;
     private final LegendBuilder legendBuilder;
 
 
     /* Interactor styles */
     @Autowired
-    public StyleService(TaxonMapper taxonMapper, MIOntology miOntology){
+    public StyleService(TaxonMapper taxonMapper, MIOntology miOntology) {
         this.taxonMapper = taxonMapper;
         this.miOntology = miOntology;
         interactorTypeMapper = new InteractorTypeMapper(miOntology);
@@ -50,16 +51,13 @@ public class StyleService {
 
         summaryEdgeWidthMapper = new SummaryEdgeWidthMapper();
         interactionExpansionMapper = new InteractionExpansionMapper();
+        interactionNegativeMapper = new InteractionNegativeMapper();
 
         legendBuilder = new LegendBuilder(taxonMapper, interactorTypeMapper,
                 interactionTypeMapper, miScoreMapper, interactionMutationColorMapper,
                 interactionMutationWidthMapper, interactorMutationMapper, interactorMutationBorderWidthMapper,
-                interactionExpansionMapper, summaryEdgeWidthMapper);
-    };
-    private final LegendBuilder legendBuilder = new LegendBuilder(taxonMapper, interactorTypeMapper,
-            interactionTypeMapper, miScoreMapper, interactionMutationColorMapper,
-            interactionMutationWidthMapper, interactorMutationMapper, interactorMutationBorderWidthMapper,
-            interactionExpansionMapper, interactionNegativeMapper, summaryEdgeWidthMapper);
+                interactionExpansionMapper, interactionNegativeMapper, summaryEdgeWidthMapper);
+    }
 
     /* Interactor styles */
 
@@ -87,6 +85,10 @@ public class StyleService {
 
     public Color getInteractionColor(String typeMIId) {
         return interactionTypeMapper.getStyleOf(typeMIId);
+    }
+
+    public Color getNegativeInteractionSymbolColor(boolean isNegative) {
+        return interactionNegativeMapper.getStyleOf(isNegative);
     }
 
     public Color getMutationInteractionColor(boolean mutation) {

@@ -19,6 +19,8 @@ public class GlobalEdgeStyle {
     private Color mutationColor;
     @JsonProperty("mutation_width")
     private int mutationWidth;
+    @JsonProperty("negative_symbol_color")
+    private Color negativeSymbolColor;
 
     public Color getSummaryColor() {
         return summaryColor;
@@ -66,5 +68,13 @@ public class GlobalEdgeStyle {
 
     public void setMutationWidth(int mutationWidth) {
         this.mutationWidth = mutationWidth;
+    }
+
+    public Color getNegativeSymbolColor() {
+        return negativeSymbolColor;
+    }
+
+    public void setNegativeSymbolColor(Color negativeSymbolColor) {
+        this.negativeSymbolColor = negativeSymbolColor;
     }
 }

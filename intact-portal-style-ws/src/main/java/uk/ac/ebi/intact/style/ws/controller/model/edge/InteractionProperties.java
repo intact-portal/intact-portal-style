@@ -14,6 +14,7 @@ public class InteractionProperties {
     private String typeMIId;
     private boolean expanded;
     private boolean mutated;
+    private boolean negative;
 
     public int getNbSummarisedInteractions() {
         return nbSummarisedInteractions;
@@ -53,5 +54,13 @@ public class InteractionProperties {
 
     public void setMutated(boolean mutated) {
         this.mutated = mutated;
+    }
+
+    public boolean isNegative() {
+        return negative;
+    }
+
+    public void setNegative(boolean negative) {
+        this.negative = negative;
     }
 }
