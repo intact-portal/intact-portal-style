@@ -22,6 +22,8 @@ public class NetworkEdgeLegend {
     private Map<Boolean, BooleanLegend<Color>> mutationColor = new LinkedHashMap<>();
     @JsonProperty("mutation_width")
     private Map<Boolean, BooleanLegend<Integer>> mutationWidth = new LinkedHashMap<>();
+    @JsonProperty("negative")
+    private Map<Boolean, BooleanLegend<Color>> negative = new LinkedHashMap<>();
     @JsonProperty
     private Map<Boolean, BooleanLegend<EdgeShape>> expansion = new LinkedHashMap<>();
 
@@ -54,6 +56,14 @@ public class NetworkEdgeLegend {
 
     public void setMutationWidth(Map<Boolean, BooleanLegend<Integer>> mutationWidth) {
         this.mutationWidth = mutationWidth;
+    }
+
+    public Map<Boolean, BooleanLegend<Color>> getNegative() {
+        return negative;
+    }
+
+    public void setNegative(Map<Boolean, BooleanLegend<Color>> negative) {
+        this.negative = negative;
     }
 
     public Map<Boolean, BooleanLegend<EdgeShape>> getExpansion() {

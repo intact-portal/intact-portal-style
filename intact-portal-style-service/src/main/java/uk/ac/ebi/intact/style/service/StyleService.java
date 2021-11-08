@@ -56,6 +56,12 @@ public class StyleService {
                 interactionMutationWidthMapper, interactorMutationMapper, interactorMutationBorderWidthMapper,
                 interactionExpansionMapper, summaryEdgeWidthMapper);
     };
+    private final LegendBuilder legendBuilder = new LegendBuilder(taxonMapper, interactorTypeMapper,
+            interactionTypeMapper, miScoreMapper, interactionMutationColorMapper,
+            interactionMutationWidthMapper, interactorMutationMapper, interactorMutationBorderWidthMapper,
+            interactionExpansionMapper, interactionNegativeMapper, summaryEdgeWidthMapper);
+
+    /* Interactor styles */
 
     public Color getInteractorColor(String taxon) {
         return taxonMapper.getStyleOf(taxon);
@@ -106,8 +112,9 @@ public class StyleService {
                                       boolean nodeMutated,
                                       Collection<String> edgeTypes,
                                       boolean edgeExpanded,
-                                      boolean edgeAffectedByMutation) {
-        return legendBuilder.createLegend(taxIds, nodeTypes, nodeMutated, edgeTypes, edgeExpanded, edgeAffectedByMutation);
+                                      boolean edgeAffectedByMutation,
+                                      boolean edgeNegative) {
+        return legendBuilder.createLegend(taxIds, nodeTypes, nodeMutated, edgeTypes, edgeExpanded, edgeAffectedByMutation, edgeNegative);
     }
 
     /* Updates */
