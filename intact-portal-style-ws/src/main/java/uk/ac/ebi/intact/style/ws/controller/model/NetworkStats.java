@@ -15,6 +15,8 @@ public class NetworkStats {
     private Collection<String> edgeTypes;
     @JsonProperty("has_edge_expanded")
     private boolean edgeExpanded;
+    @JsonProperty("has_negative_edge")
+    private boolean edgeNegative;
     @JsonProperty("has_edge_affected_by_mutation")
     private boolean edgeAffectedByMutation;
 
@@ -64,5 +66,13 @@ public class NetworkStats {
 
     public void setEdgeAffectedByMutation(boolean edgeAffectedByMutation) {
         this.edgeAffectedByMutation = edgeAffectedByMutation;
+    }
+
+    public boolean isEdgeNegative() {
+        return edgeNegative;
+    }
+
+    public void setEdgeNegative(boolean edgeNegative) {
+        this.edgeNegative = edgeNegative;
     }
 }

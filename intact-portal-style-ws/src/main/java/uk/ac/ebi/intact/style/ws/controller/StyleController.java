@@ -41,7 +41,8 @@ public class StyleController {
                         stats.isNodeMutated(),
                         stats.getEdgeTypes(),
                         stats.isEdgeExpanded(),
-                        stats.isEdgeAffectedByMutation()),
+                        stats.isEdgeAffectedByMutation(),
+                        stats.isEdgeNegative()),
                 HttpStatus.OK
         );
     }

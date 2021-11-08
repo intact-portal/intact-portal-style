@@ -30,11 +30,12 @@ public class StyleService {
     private final InteractionMutationWidthMapper interactionMutationWidthMapper = new InteractionMutationWidthMapper();
     private final SummaryEdgeWidthMapper summaryEdgeWidthMapper = new SummaryEdgeWidthMapper();
     private final InteractionExpansionMapper interactionExpansionMapper = new InteractionExpansionMapper();
+    private final InteractionNegativeMapper interactionNegativeMapper = new InteractionNegativeMapper();
 
     private final LegendBuilder legendBuilder = new LegendBuilder(taxonMapper, interactorTypeMapper,
             interactionTypeMapper, miScoreMapper, interactionMutationColorMapper,
             interactionMutationWidthMapper, interactorMutationMapper, interactorMutationBorderWidthMapper,
-            interactionExpansionMapper, summaryEdgeWidthMapper);
+            interactionExpansionMapper, interactionNegativeMapper, summaryEdgeWidthMapper);
 
     /* Interactor styles */
 
@@ -87,8 +88,9 @@ public class StyleService {
                                       boolean nodeMutated,
                                       Collection<String> edgeTypes,
                                       boolean edgeExpanded,
-                                      boolean edgeAffectedByMutation) {
-        return legendBuilder.createLegend(taxIds, nodeTypes, nodeMutated, edgeTypes, edgeExpanded, edgeAffectedByMutation);
+                                      boolean edgeAffectedByMutation,
+                                      boolean edgeNegative) {
+        return legendBuilder.createLegend(taxIds, nodeTypes, nodeMutated, edgeTypes, edgeExpanded, edgeAffectedByMutation, edgeNegative);
     }
 
     /* Updates */

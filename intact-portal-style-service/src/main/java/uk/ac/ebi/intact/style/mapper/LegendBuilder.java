@@ -23,6 +23,7 @@ public class LegendBuilder {
     private final InteractorMutationMapper interactorMutationMapper;
     private final InteractorMutationBorderWidthMapper interactorMutationBorderWidthMapper;
     private final InteractionExpansionMapper interactionExpansionMapper;
+    private final InteractionNegativeMapper interactionNegativeMapper;
     private final SummaryEdgeWidthMapper summaryEdgeWidthMapper;
 
     public LegendBuilder(TaxonMapper taxonMapper,
@@ -31,7 +32,7 @@ public class LegendBuilder {
                          MIScoreMapper miScoreMapper,
                          InteractionMutationColorMapper interactionMutationColorMapper,
                          InteractionMutationWidthMapper interactionMutationWidthMapper, InteractorMutationMapper interactorMutationMapper,
-                         InteractorMutationBorderWidthMapper interactorMutationBorderWidthMapper, InteractionExpansionMapper interactionExpansionMapper, SummaryEdgeWidthMapper summaryEdgeWidthMapper) {
+                         InteractorMutationBorderWidthMapper interactorMutationBorderWidthMapper, InteractionExpansionMapper interactionExpansionMapper, InteractionNegativeMapper interactionNegativeMapper, SummaryEdgeWidthMapper summaryEdgeWidthMapper) {
         this.taxonMapper = taxonMapper;
         this.interactorTypeMapper = interactorTypeMapper;
         this.interactionTypeMapper = interactionTypeMapper;
@@ -41,13 +42,14 @@ public class LegendBuilder {
         this.interactorMutationMapper = interactorMutationMapper;
         this.interactorMutationBorderWidthMapper = interactorMutationBorderWidthMapper;
         this.interactionExpansionMapper = interactionExpansionMapper;
+        this.interactionNegativeMapper = interactionNegativeMapper;
         this.summaryEdgeWidthMapper = summaryEdgeWidthMapper;
     }
 
-    public NetworkLegend createLegend(Collection<String> taxIds, Collection<String> nodeTypes, boolean nodeMutated, Collection<String> edgeTypes, boolean edgeExpanded, boolean edgeAffectedByMutation) {
+    public NetworkLegend createLegend(Collection<String> taxIds, Collection<String> nodeTypes, boolean nodeMutated, Collection<String> edgeTypes, boolean edgeExpanded, boolean edgeAffectedByMutation, boolean negativeEdge) {
         NetworkLegend legend = new NetworkLegend();
         setupNodeLegend(legend.getNodeLegend(), taxIds, nodeTypes, nodeMutated);
-        setupEdgeLegend(legend.getEdgeLegend(), edgeTypes, edgeExpanded, edgeAffectedByMutation);
+        setupEdgeLegend(legend.getEdgeLegend(), edgeTypes, edgeExpanded, edgeAffectedByMutation, negativeEdge);
         return legend;
     }
 
@@ -58,10 +60,11 @@ public class LegendBuilder {
         legend.setBorderWidth(interactorMutationBorderWidthMapper.createLegend(nodeMutated));
     }
 
-    private void setupEdgeLegend(NetworkEdgeLegend legend, Collection<String> edgeTypes, boolean edgeExpanded, boolean edgeAffectedByMutation) {
+    private void setupEdgeLegend(NetworkEdgeLegend legend, Collection<String> edgeTypes, boolean edgeExpanded, boolean edgeAffectedByMutation, boolean negativeEdge) {
         legend.setSummaryColors(miScoreMapper.createLegend());
         legend.setEvidenceColors(interactionTypeMapper.createLegend(edgeTypes));
         legend.setExpansion(interactionExpansionMapper.createLegend(edgeExpanded));
+        legend.setNegative(interactionNegativeMapper.createLegend(negativeEdge));
         legend.setMutationColor(interactionMutationColorMapper.createLegend(edgeAffectedByMutation));
         legend.setMutationWidth(interactionMutationWidthMapper.createLegend(edgeAffectedByMutation));
         legend.setSummaryWidth(summaryEdgeWidthMapper.createLegend());
