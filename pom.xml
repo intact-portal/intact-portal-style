@@ -5,7 +5,7 @@
 
     <groupId>uk.ac.ebi.intact.style</groupId>
     <artifactId>intact-style-module</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>IntAct Portal :: Style Parent Module</name>
