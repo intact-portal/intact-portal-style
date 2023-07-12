@@ -1,8 +1,10 @@
 package uk.ac.ebi.intact.style.mapper.booleans;
 
 
-import java.awt.*;
+import org.springframework.stereotype.Component;
 
+import java.awt.*;
+@Component
 public class InteractionNegativeMapper extends BooleanMapper<Color> {
 
     @Override

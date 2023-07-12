@@ -1,8 +1,9 @@
 package uk.ac.ebi.intact.style.mapper.booleans;
 
 
+import org.springframework.stereotype.Component;
 import uk.ac.ebi.intact.style.model.shapes.EdgeShape;
-
+@Component
 public class InteractionExpansionMapper extends BooleanMapper<EdgeShape> {
     @Override
     public EdgeShape getStyleOf(Boolean key) {

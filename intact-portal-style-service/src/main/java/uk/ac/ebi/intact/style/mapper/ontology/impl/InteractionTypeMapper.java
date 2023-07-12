@@ -1,12 +1,14 @@
 package uk.ac.ebi.intact.style.mapper.ontology.impl;
 
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 import uk.ac.ebi.intact.style.mapper.ontology.AbstractOntologyMapper;
 import uk.ac.ebi.intact.style.mapper.ontology.archetypes.InteractionType;
 import uk.ac.ebi.intact.style.model.ontology.Term;
 
 import java.awt.*;
-
+@Component
 public class InteractionTypeMapper extends AbstractOntologyMapper<InteractionType, Color> {
 
     private final MIOntology ontology;

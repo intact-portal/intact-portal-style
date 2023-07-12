@@ -1,5 +1,6 @@
 package uk.ac.ebi.intact.style.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uk.ac.ebi.intact.style.mapper.LegendBuilder;
@@ -18,11 +19,11 @@ import java.awt.*;
 import java.util.Collection;
 
 @Service
+@RequiredArgsConstructor
 public class StyleService {
 
     private final TaxonMapper taxonMapper;
     private final MIOntology miOntology;
-
     private final InteractorTypeMapper interactorTypeMapper;
     private final InteractorMutationMapper interactorMutationMapper;
     private final InteractorMutationBorderWidthMapper interactorMutationBorderWidthMapper;
@@ -34,30 +35,6 @@ public class StyleService {
     private final InteractionExpansionMapper interactionExpansionMapper;
     private final InteractionNegativeMapper interactionNegativeMapper;
     private final LegendBuilder legendBuilder;
-
-
-    /* Interactor styles */
-    @Autowired
-    public StyleService(TaxonMapper taxonMapper, MIOntology miOntology) {
-        this.taxonMapper = taxonMapper;
-        this.miOntology = miOntology;
-        interactorTypeMapper = new InteractorTypeMapper(miOntology);
-        interactorMutationMapper = new InteractorMutationMapper();
-        interactorMutationBorderWidthMapper = new InteractorMutationBorderWidthMapper();
-        miScoreMapper = new MIScoreMapper();
-        interactionTypeMapper = new InteractionTypeMapper(miOntology);
-        interactionMutationColorMapper = new InteractionMutationColorMapper();
-        interactionMutationWidthMapper = new InteractionMutationWidthMapper();
-
-        summaryEdgeWidthMapper = new SummaryEdgeWidthMapper();
-        interactionExpansionMapper = new InteractionExpansionMapper();
-        interactionNegativeMapper = new InteractionNegativeMapper();
-
-        legendBuilder = new LegendBuilder(taxonMapper, interactorTypeMapper,
-                interactionTypeMapper, miScoreMapper, interactionMutationColorMapper,
-                interactionMutationWidthMapper, interactorMutationMapper, interactorMutationBorderWidthMapper,
-                interactionExpansionMapper, interactionNegativeMapper, summaryEdgeWidthMapper);
-    }
 
     /* Interactor styles */
 

@@ -7,6 +7,17 @@ public class Ontology {
     private Map<String, Term> terms = new HashMap<>();
     private Term root;
 
+    public void populateTerms() {
+        populateTerms(getRoot());
+    }
+
+    private void populateTerms(Term parent) {
+        for (Term child : parent.getChildren()) {
+            terms.put(child.getId(), child);
+            populateTerms(child);
+        }
+    }
+
     public Map<String, Term> getTerms() {
         return terms;
     }
