@@ -1,8 +1,10 @@
 package uk.ac.ebi.intact.style.mapper.continuous;
 
+import org.springframework.stereotype.Component;
 import uk.ac.ebi.intact.style.mapper.Mapper;
 import uk.ac.ebi.intact.style.model.legend.SummaryEdgeWidthLegend;
 
+@Component
 public class SummaryEdgeWidthMapper implements Mapper<Integer, Integer> {
     @Override
     public Integer getStyleOf(Integer key) {
