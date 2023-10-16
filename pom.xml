@@ -4,8 +4,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>uk.ac.ebi.intact.style</groupId>
-    <artifactId>intact-style</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <artifactId>intact-style-module</artifactId>
+    <version>1.0.2</version>
     <packaging>pom</packaging>
 
     <name>IntAct Portal :: Style Parent Module</name>
@@ -14,32 +14,56 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.4.2</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <version>2.4.13</version>
+        <relativePath/>
     </parent>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
+        <java.version>11</java.version>
+
+        <spring.version>2.4.13</spring.version>
+        <lombok.version>1.18.28</lombok.version>
+        <json-simple.version>1.1.1</json-simple.version>
+        <swagger.version>2.9.2</swagger.version>
     </properties>
 
     <modules>
-
         <module>intact-portal-style-service</module>
         <module>intact-portal-style-ws</module>
     </modules>
 
     <scm>
         <connection>scm:git:https://github.com/intact-portal/intact-portal-style.git</connection>
-        <developerConnection>scm:git:https://github.com/intact-portal/intact-portal-style.git
-        </developerConnection>
+        <developerConnection>scm:git:https://github.com/intact-portal/intact-portal-style.git</developerConnection>
         <url>https://github.com/intact-portal/intact-portal-style</url>
         <tag>HEAD</tag>
     </scm>
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.springframework.boot</groupId>
+                            <artifactId>spring-boot-configuration-processor</artifactId>
+                            <version>${spring.version}</version>
+                        </path>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+
             <plugin>
                 <groupId>external.atlassian.jgitflow</groupId>
                 <artifactId>jgitflow-maven-plugin</artifactId>
@@ -70,11 +94,11 @@
     <repositories>
         <repository>
             <id>nexus-ebi-release-repo</id>
-            <url>http://www.ebi.ac.uk/Tools/maven/repos/content/groups/ebi-repo/</url>
+            <url>https://www.ebi.ac.uk/Tools/maven/repos/content/groups/ebi-repo/</url>
         </repository>
         <repository>
             <id>nexus-ebi-snapshot-repo</id>
-            <url>http://www.ebi.ac.uk/Tools/maven/repos/content/groups/ebi-snapshots/</url>
+            <url>https://www.ebi.ac.uk/Tools/maven/repos/content/groups/ebi-snapshots/</url>
         </repository>
     </repositories>
 

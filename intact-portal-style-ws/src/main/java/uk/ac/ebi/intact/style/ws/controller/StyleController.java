@@ -3,6 +3,7 @@ package uk.ac.ebi.intact.style.ws.controller;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +26,7 @@ public class StyleController {
 
     private final StyleService styleService;
 
+    @Autowired
     public StyleController(StyleService styleService) {
         this.styleService = styleService;
     }
@@ -107,6 +109,7 @@ public class StyleController {
 
         style.setMutationColor(styleService.getMutationInteractionColor(properties.isMutated()));
         style.setMutationWidth(styleService.getMutationInteractionWidth(properties.isMutated()));
+        style.setNegativeSymbolColor(styleService.getNegativeInteractionSymbolColor(properties.isNegative()));
         return new ResponseEntity<>(style, HttpStatus.OK);
     }
 
@@ -146,6 +149,7 @@ public class StyleController {
         EdgeStyle style = new EdgeStyle();
         style.setColor(styleService.getInteractionColor(properties.getTypeMIId()));
         style.setShape(styleService.getInteractionShape(properties.isExpanded()));
+        style.setSymbolColor(styleService.getNegativeInteractionSymbolColor(properties.isNegative()));
         return new ResponseEntity<>(style, HttpStatus.OK);
     }
 
@@ -174,6 +178,7 @@ public class StyleController {
         style.setColor(styleService.getMutationInteractionColor(properties.hasMutation()));
         style.setWidth(styleService.getMutationInteractionWidth(properties.hasMutation()));
         style.setShape(styleService.getInteractionShape(properties.isExpanded()));
+        style.setSymbolColor(styleService.getNegativeInteractionSymbolColor(properties.isNegative()));
         return new ResponseEntity<>(style, HttpStatus.OK);
     }
 
@@ -191,6 +196,14 @@ public class StyleController {
             produces = {APPLICATION_JSON_VALUE})
     public ResponseEntity<Integer> getMutationInteractionWidth(@RequestParam("has_mutation") boolean hasMutation) {
         return new ResponseEntity<>(styleService.getMutationInteractionWidth(hasMutation), HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "", tags = {"interaction"})
+    @CrossOrigin(origins = "*")
+    @GetMapping(value = "/interaction/negative/symbol-color",
+            produces = {APPLICATION_JSON_VALUE})
+    public ResponseEntity<Color> getNegativeInteractionSymbolColor(@RequestParam("is_negative") boolean isNegative) {
+        return new ResponseEntity<>(styleService.getNegativeInteractionSymbolColor(isNegative), HttpStatus.OK);
     }
 
     /* Updates */

@@ -1,5 +1,7 @@
 package uk.ac.ebi.intact.style.mapper;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 import uk.ac.ebi.intact.style.mapper.booleans.*;
 import uk.ac.ebi.intact.style.mapper.continuous.MIScoreMapper;
 import uk.ac.ebi.intact.style.mapper.continuous.SummaryEdgeWidthMapper;
@@ -12,6 +14,8 @@ import uk.ac.ebi.intact.style.model.legend.NetworkNodeLegend;
 
 import java.util.Collection;
 
+@Component
+@RequiredArgsConstructor
 public class LegendBuilder {
     private final TaxonMapper taxonMapper;
     private final InteractorTypeMapper interactorTypeMapper;
@@ -25,26 +29,6 @@ public class LegendBuilder {
     private final InteractionExpansionMapper interactionExpansionMapper;
     private final InteractionNegativeMapper interactionNegativeMapper;
     private final SummaryEdgeWidthMapper summaryEdgeWidthMapper;
-
-    public LegendBuilder(TaxonMapper taxonMapper,
-                         InteractorTypeMapper interactorTypeMapper,
-                         InteractionTypeMapper interactionTypeMapper,
-                         MIScoreMapper miScoreMapper,
-                         InteractionMutationColorMapper interactionMutationColorMapper,
-                         InteractionMutationWidthMapper interactionMutationWidthMapper, InteractorMutationMapper interactorMutationMapper,
-                         InteractorMutationBorderWidthMapper interactorMutationBorderWidthMapper, InteractionExpansionMapper interactionExpansionMapper, InteractionNegativeMapper interactionNegativeMapper, SummaryEdgeWidthMapper summaryEdgeWidthMapper) {
-        this.taxonMapper = taxonMapper;
-        this.interactorTypeMapper = interactorTypeMapper;
-        this.interactionTypeMapper = interactionTypeMapper;
-        this.miScoreMapper = miScoreMapper;
-        this.interactionMutationColorMapper = interactionMutationColorMapper;
-        this.interactionMutationWidthMapper = interactionMutationWidthMapper;
-        this.interactorMutationMapper = interactorMutationMapper;
-        this.interactorMutationBorderWidthMapper = interactorMutationBorderWidthMapper;
-        this.interactionExpansionMapper = interactionExpansionMapper;
-        this.interactionNegativeMapper = interactionNegativeMapper;
-        this.summaryEdgeWidthMapper = summaryEdgeWidthMapper;
-    }
 
     public NetworkLegend createLegend(Collection<String> taxIds, Collection<String> nodeTypes, boolean nodeMutated, Collection<String> edgeTypes, boolean edgeExpanded, boolean edgeAffectedByMutation, boolean negativeEdge) {
         NetworkLegend legend = new NetworkLegend();

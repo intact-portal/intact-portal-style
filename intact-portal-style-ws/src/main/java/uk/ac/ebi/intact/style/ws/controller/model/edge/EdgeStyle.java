@@ -8,6 +8,7 @@ public class EdgeStyle {
     private Color color;
     private EdgeShape shape = EdgeShape.SOLID_LINE;
     private int width = 3;
+    private Color symbolColor = null;
 
     public Color getColor() {
         return color;
@@ -31,5 +32,13 @@ public class EdgeStyle {
 
     public void setWidth(int width) {
         this.width = width;
+    }
+
+    public Color getSymbolColor() {
+        return symbolColor;
+    }
+
+    public void setSymbolColor(Color symbolColor) {
+        this.symbolColor = symbolColor;
     }
 }

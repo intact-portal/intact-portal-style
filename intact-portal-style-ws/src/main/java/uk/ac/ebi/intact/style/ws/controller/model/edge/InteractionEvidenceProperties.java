@@ -8,6 +8,7 @@ public class InteractionEvidenceProperties {
     @JsonProperty(value = "type_id")
     private String typeMIId;
     private boolean expanded;
+    private boolean negative;
 
     public String getTypeMIId() {
         return typeMIId;
@@ -23,5 +24,13 @@ public class InteractionEvidenceProperties {
 
     public void setExpanded(boolean expanded) {
         this.expanded = expanded;
+    }
+
+    public boolean isNegative() {
+        return negative;
+    }
+
+    public void setNegative(boolean negative) {
+        this.negative = negative;
     }
 }

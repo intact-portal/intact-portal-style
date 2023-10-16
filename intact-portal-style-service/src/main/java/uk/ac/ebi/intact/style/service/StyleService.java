@@ -1,5 +1,7 @@
 package uk.ac.ebi.intact.style.service;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uk.ac.ebi.intact.style.mapper.LegendBuilder;
 import uk.ac.ebi.intact.style.mapper.booleans.*;
@@ -17,25 +19,22 @@ import java.awt.*;
 import java.util.Collection;
 
 @Service
+@RequiredArgsConstructor
 public class StyleService {
-    private final TaxonMapper taxonMapper = new TaxonMapper();
-    private final MIOntology miOntology = new MIOntology();
-    private final InteractorTypeMapper interactorTypeMapper = new InteractorTypeMapper(miOntology);
-    private final InteractorMutationMapper interactorMutationMapper = new InteractorMutationMapper();
-    private final InteractorMutationBorderWidthMapper interactorMutationBorderWidthMapper = new InteractorMutationBorderWidthMapper();
 
-    private final MIScoreMapper miScoreMapper = new MIScoreMapper();
-    private final InteractionTypeMapper interactionTypeMapper = new InteractionTypeMapper(miOntology);
-    private final InteractionMutationColorMapper interactionMutationColorMapper = new InteractionMutationColorMapper();
-    private final InteractionMutationWidthMapper interactionMutationWidthMapper = new InteractionMutationWidthMapper();
-    private final SummaryEdgeWidthMapper summaryEdgeWidthMapper = new SummaryEdgeWidthMapper();
-    private final InteractionExpansionMapper interactionExpansionMapper = new InteractionExpansionMapper();
-    private final InteractionNegativeMapper interactionNegativeMapper = new InteractionNegativeMapper();
-
-    private final LegendBuilder legendBuilder = new LegendBuilder(taxonMapper, interactorTypeMapper,
-            interactionTypeMapper, miScoreMapper, interactionMutationColorMapper,
-            interactionMutationWidthMapper, interactorMutationMapper, interactorMutationBorderWidthMapper,
-            interactionExpansionMapper, interactionNegativeMapper, summaryEdgeWidthMapper);
+    private final TaxonMapper taxonMapper;
+    private final MIOntology miOntology;
+    private final InteractorTypeMapper interactorTypeMapper;
+    private final InteractorMutationMapper interactorMutationMapper;
+    private final InteractorMutationBorderWidthMapper interactorMutationBorderWidthMapper;
+    private final MIScoreMapper miScoreMapper;
+    private final InteractionTypeMapper interactionTypeMapper;
+    private final InteractionMutationColorMapper interactionMutationColorMapper;
+    private final InteractionMutationWidthMapper interactionMutationWidthMapper;
+    private final SummaryEdgeWidthMapper summaryEdgeWidthMapper;
+    private final InteractionExpansionMapper interactionExpansionMapper;
+    private final InteractionNegativeMapper interactionNegativeMapper;
+    private final LegendBuilder legendBuilder;
 
     /* Interactor styles */
 
@@ -63,6 +62,10 @@ public class StyleService {
 
     public Color getInteractionColor(String typeMIId) {
         return interactionTypeMapper.getStyleOf(typeMIId);
+    }
+
+    public Color getNegativeInteractionSymbolColor(boolean isNegative) {
+        return interactionNegativeMapper.getStyleOf(isNegative);
     }
 
     public Color getMutationInteractionColor(boolean mutation) {

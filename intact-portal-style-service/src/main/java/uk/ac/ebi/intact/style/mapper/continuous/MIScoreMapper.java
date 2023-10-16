@@ -1,5 +1,6 @@
 package uk.ac.ebi.intact.style.mapper.continuous;
 
+import org.springframework.stereotype.Component;
 import uk.ac.ebi.intact.style.mapper.Mapper;
 import uk.ac.ebi.intact.style.model.legend.Range;
 
@@ -7,6 +8,7 @@ import java.awt.*;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+@Component
 public class MIScoreMapper implements Mapper<Double, Color> {
     public static final Color[] colors = {
             new Color(255, 255, 221),
@@ -18,6 +20,7 @@ public class MIScoreMapper implements Mapper<Double, Color> {
             new Color(193, 55, 0),
             new Color(135, 36, 0),
             new Color(83, 26, 0),
+            new Color(41, 15, 2),
             new Color(41, 15, 2),
     };
 

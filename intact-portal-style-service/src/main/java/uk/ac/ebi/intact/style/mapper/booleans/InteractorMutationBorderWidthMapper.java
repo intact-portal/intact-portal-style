@@ -1,5 +1,8 @@
 package uk.ac.ebi.intact.style.mapper.booleans;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class InteractorMutationBorderWidthMapper extends BooleanMapper<Integer> {
     public static final int MUTATED_BORDER_WIDTH = 4;
     public static final int NOT_MUTATED_BORDER_WIDTH = 0;

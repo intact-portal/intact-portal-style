@@ -1,7 +1,9 @@
 package uk.ac.ebi.intact.style.mapper.booleans;
 
-import java.awt.*;
+import org.springframework.stereotype.Component;
 
+import java.awt.*;
+@Component
 public class InteractorMutationMapper extends BooleanMapper<Color> {
 
     public static final Color MUTATION_COLOR = new Color(255, 0, 161);
